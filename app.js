@@ -171,7 +171,10 @@ app.post('/convert', upload, async (req, res) => {
         //const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
         const downloadLink = `https://image-convter-backend.vercel.app/download/${outputFilename}`;
 
+        console.log("--------- 1")
+
         if (req.file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
+            console.log("--------- 2")
             if (toFormat === 'html') {
                 const result = await mammoth.convertToHtml({ path: inputPath });
                 fs.writeFileSync(outputPath, result.value);
@@ -186,7 +189,9 @@ app.post('/convert', upload, async (req, res) => {
             } else {
                 throw new Error(`Unsupported conversion format: ${toFormat}`);
             }
+            console.log("--------- 3")
         } else {
+            console.log("--------- 4")
             if (toFormat === 'pdf') {
                 const pdfDoc = await PDFDocument.create();
                 const image = sharp(inputPath);
