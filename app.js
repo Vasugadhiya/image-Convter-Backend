@@ -390,7 +390,7 @@ console.log("🚀 ~ app.post ~ toFormat:", toFormat)
 console.log("🚀 ~ app.post ~ req.file.filename:", req.file.filename)
         const outputFilename = `${req.file.originalname.split('.')[0]}-${Date.now()}.${toFormat}`;
         const outputPath = path.join('/tmp', outputFilename);
-const downloadLink = `${req.protocol}://image-convter-backend.vercel.app/download/${outputFilename}`;
+const downloadLink = `https://image-convter-backend.vercel.app/download/${outputFilename}`;
  
         console.log("--------- 1")
  
