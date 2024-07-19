@@ -173,7 +173,7 @@ app.post('/convert', upload, async (req, res) => {
         const outputFilename = `${req.file.originalname.split('.')[0]}-${Date.now()}.${toFormat}`;
         const outputPath = path.join(__dirname, 'upload', outputFilename);
         //const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
-        const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
+        const downloadLink = `${req.protocol}://image-convter-backend.vercel.app/download/${outputFilename}`;
 
         console.log("--------- 1")
 
