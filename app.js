@@ -168,7 +168,8 @@ app.post('/convert', upload, async (req, res) => {
         const inputPath = path.join(__dirname, 'upload', req.file.filename);
         const outputFilename = `${req.file.originalname.split('.')[0]}-${Date.now()}.${toFormat}`;
         const outputPath = path.join(__dirname, 'upload', outputFilename);
-        const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
+        //const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
+        const downloadLink = `https://image-convter-backend.vercel.app/download/${outputFilename}`;
 
         if (req.file.mimetype === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document') {
             if (toFormat === 'html') {
