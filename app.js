@@ -162,7 +162,9 @@ app.use(cors());
 app.use('/download', express.static("upload"));
 
 app.post('/convert', upload, async (req, res) => {
+    console.log("__________________________________________________________")
     try {
+        console.log("-----------------------------------------------------------------------------------------------")
         let toFormat = req.body.to;
         console.log("🚀 ~ app.post ~ toFormat:", toFormat)
         
@@ -171,7 +173,7 @@ app.post('/convert', upload, async (req, res) => {
         const outputFilename = `${req.file.originalname.split('.')[0]}-${Date.now()}.${toFormat}`;
         const outputPath = path.join(__dirname, 'upload', outputFilename);
         //const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
-        const downloadLink = `https://image-convter-backend.vercel.app/download/${outputFilename}`;
+        const downloadLink = `${req.protocol}://${req.get('host')}/download/${outputFilename}`;
 
         console.log("--------- 1")
 
@@ -327,6 +329,7 @@ app.post('/convert', upload, async (req, res) => {
         return res.status(200).send({ message: 'Conversion successful', downloadLink: downloadLink });
 
     } catch (err) {
+        console.log("***************************")
         console.error('Error during conversion:', err);
         res.status(500).send({ error: 'Conversion failed' });
     }
