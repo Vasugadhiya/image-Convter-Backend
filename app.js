@@ -217,6 +217,8 @@
 
 //------------------------------------------------------------------------- live ----------------------------------------------------------------------------------------------------------
 
+// jpeg', 'jpg', 'png', 'gif', 'tiff', 'webp', 'hdr', 'avif' , 'pdf', 'dds', 'heic', 'heif', 'docx', 'pptx', 'odb working but app creash' , 'rgb', 'jfif' ----> totaly working in live
+
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
