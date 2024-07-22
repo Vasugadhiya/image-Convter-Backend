@@ -1,4 +1,6 @@
-//************************************************** New Code *************************************************************************************************** */
+//**************************************************  Local New Code *************************************************************************************************** */
+
+// jpeg', 'jpg', 'png', 'gif', 'tiff', 'webp', 'hdr', 'avif' , 'pdf', 'dds', 'heic', 'heif', 'docx', 'pptx', 'odb working but app creash' , 'rgb', 'jfif' ----> totaly working ma chhe
 
 // const express = require('express');
 // const multer = require('multer');
@@ -86,12 +88,12 @@
 //                         const ddsBuffer = imageJs.encode(imageJs.getFormat("DDS"), { width, height, data }); // Encode to DDS format
 //                         fs.writeFileSync(outputPath, Buffer.from(ddsBuffer));
 //                         break;
-//                     case 'heic':
-//                         case 'heif':
+//                     case 'HEIC':
+//                         case 'HEIF':
 //                             const heicImageBuffer = await fs.readFile(inputPath);
 //                             const heicImage = await heicConvert({
 //                                 buffer: heicImageBuffer,
-//                                 format: 'JPEG' // Convert HEIC/HEIF to JPEG for embedding in PDF
+//                                 format: 'HEIF' // Convert HEIC/HEIF to JPEG for embedding in PDF
 //                             });
 //                             embeddedImage = await pdfDoc.embedJpg(heicImage);
 //                             break;
@@ -149,7 +151,7 @@
 //                     }
 //                     console.log(stdout);
 //                 });
-//             } else if (['heic', 'heif'].includes(toFormat)) {
+//             } else if (['HEIC', 'HEIF'].includes(toFormat)) {
 //                 const image = await Jimp.read(inputPath);
 //                 const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
 //                 const heicImage = await heicConvert({
@@ -332,12 +334,12 @@ app.post("/convert", upload, async (req, res) => {
             }); // Encode to DDS format
             fs.writeFileSync(outputPath, Buffer.from(encodedDdsBuffer));
             break;
-          case "heic":
-          case "heif":
+          case "HEIC":
+          case "HEIF":
             const heicImageBuffer = await fs.readFile(inputPath);
             const heicImage = await heicConvert({
               buffer: heicImageBuffer,
-              format: "JPEG", // Convert HEIC/HEIF to JPEG for embedding in PDF
+              format: "HEIF", // Convert HEIC/HEIF to JPEG for embedding in PDF
             });
             embeddedImage = await pdfDoc.embedJpg(heicImage);
             break;
@@ -404,7 +406,7 @@ app.post("/convert", upload, async (req, res) => {
           }
           console.log(stdout);
         });
-      } else if (["heic", "heif"].includes(toFormat)) {
+      } else if (["HEIC", "HEIF"].includes(toFormat)) {
         const image = await Jimp.read(inputPath);
         const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
         const heicImage = await heicConvert({
