@@ -36,6 +36,10 @@
 //     try {
 //         let toFormat = req.body.to;
 
+//         if (!req.file) {
+//             return res.status(400).send({ error: 'No file uploaded' });
+//         }
+
 //         const inputPath = path.join(__dirname, 'upload', req.file.filename);
 //         const outputFilename = `${req.file.originalname.split('.')[0]}-${Date.now()}.${toFormat}`;
 //         const outputPath = path.join(__dirname, 'upload', outputFilename);
@@ -263,6 +267,10 @@ app.post("/convert", upload, async (req, res) => {
     );
     let toFormat = req.body.to;
     console.log("🚀 ~ app.post ~ toFormat:", toFormat);
+
+    if (!req.file) {
+        return res.status(400).send({ error: 'No file uploaded' });
+    }
 
     const inputPath = path.join("/tmp", req.file.filename);
     console.log("🚀 ~ app.post ~ req.file.filename:", req.file.filename);
