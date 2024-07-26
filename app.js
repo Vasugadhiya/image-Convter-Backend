@@ -20,7 +20,7 @@ const cors = require("cors");
 const app = express();
 const port = 8000;
 
-const storagePath = process.env.STORAGE_PATH || "/tmp";
+const storagePath = "./upload" || "/tmp";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
