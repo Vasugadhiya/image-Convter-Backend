@@ -21,15 +21,9 @@ const app = express();
 const port = 8000;
 
 const isProduction = process.env.NODE_ENV === 'production';
-console.log("🚀 ~ isProduction:", isProduction);
-
 const liveStoragePath = process.env.LIVE_STORAGE_PATH || '/tmp';
 const localStoragePath = process.env.LOCAL_STORAGE_PATH || './upload';
 const storagePath = isProduction ? liveStoragePath : localStoragePath;
-
-console.log("🚀 ~ liveStoragePath:", liveStoragePath);
-console.log("🚀 ~ localStoragePath:", localStoragePath);
-console.log("🚀 ~ storagePath:", storagePath);
 
 // Ensure storage path exists
 fs.ensureDirSync(storagePath);
